@@ -31,12 +31,12 @@ module Generator
   end
 
   def shifts(key, date)
-    shifts = keys(key).merge(offsets(date)) {|hash_key, keys, shifts|
+    @final_shift = keys(key).merge(offsets(date)) {|hash_key, keys, shifts|
       keys + shifts }
   end
 
-  def characters
-    ("a".."z").to_a << " "
+  def character_set
+    characters = ("a".."z").to_a << " "
   end
 
 end

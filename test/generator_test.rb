@@ -12,7 +12,7 @@ class GeneratorTest < Minitest::Test
   end
 
   def test_we_can_get_todays_date
-    assert_equal "220219", @enigma.todays_date
+    assert_equal "230219", @enigma.todays_date
   end
 
   def test_seperate_keys
@@ -35,8 +35,9 @@ class GeneratorTest < Minitest::Test
 
   def test_character_set
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal expected, @enigma.characters
+                "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+                " "]
+    assert_equal expected, @enigma.character_set
   end
 
 end
