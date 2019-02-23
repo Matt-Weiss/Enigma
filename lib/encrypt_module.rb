@@ -37,24 +37,26 @@ module Encrypt
   end
 
   def encrypt_a_shift(char)
-      index = character_set.find_index(char[0])
-      character_set.rotate(@final_shift[:a])[index]
+    index = character_set.find_index(char[0])
+    shift = @encryption_modifier * final_shift[:a]
+    character_set.rotate(shift)[index]
   end
 
   def encrypt_b_shift(char)
-      index = character_set.find_index(char[0])
-      character_set.rotate(@final_shift[:b])[index]
+    index = character_set.find_index(char[0])
+    shift = @encryption_modifier * final_shift[:b]
+    character_set.rotate(shift)[index]
   end
 
   def encrypt_c_shift(char)
     index = character_set.find_index(char[0])
-    character_set.rotate(@final_shift[:c])[index]
+    shift = @encryption_modifier * final_shift[:c]
+    character_set.rotate(shift)[index]
   end
 
   def encrypt_d_shift(char)
     index = character_set.find_index(char[0])
-    character_set.rotate(@final_shift[:d])[index]
+    shift = @encryption_modifier * final_shift[:d]
+    character_set.rotate(shift)[index]
   end
-
-
 end
