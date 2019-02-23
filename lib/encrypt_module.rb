@@ -1,11 +1,19 @@
 module Encrypt
 
-  def apply_shift(message, key, date)
+  def encrypt_shift(message, key, date)
     shifts(key, date)
-    encryption = characters(message).map do |char|
+    encryption = characters_to_encrypt(message).map do |char|
       check_valid_characters(char)
     end
     encryption
+  end
+
+  def characters_to_encrypt(message)
+    characters = message.chars
+    message_with_indices = characters.map.with_index do |char, index|
+      [char, index]
+    end
+    message_with_indices
   end
 
   def check_valid_characters(char)
@@ -16,14 +24,6 @@ module Encrypt
     end
   end
 
-  def characters(message)
-    characters = message.chars
-    message_with_indices = characters.map.with_index do |char, index|
-      [char, index]
-    end
-    message_with_indices
-  end
-
   def decide_encrypt_shifts(char)
     if char[1] % 4 == 0
       encrypt_a_shift(char)
@@ -31,7 +31,7 @@ module Encrypt
       encrypt_b_shift(char)
     elsif char[1] % 4 == 2
       encrypt_c_shift(char)
-    elsif char[1] % 4 == 3
+    else
       encrypt_d_shift(char)
     end
   end
