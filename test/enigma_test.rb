@@ -8,14 +8,12 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_can_encrypt_hello
-    skip
+  def test_can_encrypt_and_join
     enigma = Enigma.new
-    assert_equal "keder", enigma.encrypt("hello", "02715", "040895")
+    assert_equal "keder ohulw", enigma.apply_shift("hello world", "02715", "040895").join
   end
 
   def test_encryption_with_key_and_date
-    skip
     enigma = Enigma.new
     expected = {encryption: "keder ohulw",
                 key: "02715",

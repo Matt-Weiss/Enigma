@@ -9,7 +9,9 @@ class Enigma
   end
 
   def encrypt(message, key = generate_key, date = todays_date)
-
+    {encryption: apply_shift(message, key, date).join,
+     key: key,
+     date: date}
   end
 
 end
