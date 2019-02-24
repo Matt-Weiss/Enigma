@@ -7,4 +7,3 @@ require 'minitest/pride'
 require 'pry'
 
 require './lib/enigma'
-require './lib/runner'
