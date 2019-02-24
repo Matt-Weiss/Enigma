@@ -1,6 +1,8 @@
+require './lib/runner'
+
 if ARGV.length != 2
-  puts "Expected 2 arguments, recieved #{ARGV.length}"
+  puts "Expected 2 arguments, received #{ARGV.length}"
+  exit
 end
 
-
-Runner.encrypt(ARGV)
+Runner.start(ARGV)

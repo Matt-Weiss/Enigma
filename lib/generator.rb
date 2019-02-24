@@ -1,3 +1,5 @@
+require 'date'
+
 module Generator
 
   def generate_key
