@@ -22,7 +22,7 @@ class EnigmaTest < Minitest::Test
 
   def test_can_encrypt_and_join
     enigma = Enigma.new
-    assert_equal "keder ohulw", enigma.encrypt_shift("hello world", "02715", "040895").join
+    assert_equal "keder ohulw", enigma.encrypt_message("hello world", "02715", "040895").join
   end
 
   def test_encryption_with_key_and_date
