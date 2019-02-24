@@ -6,7 +6,7 @@ class Enigma
   include Generator
   include Encrypt
 
-  def initialize(modifier = 1)
+  def initialize(modifier = 1) #This is for decrypt unit testing purposes.
     @final_shift = nil
     @encryption_modifier = modifier
   end
