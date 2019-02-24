@@ -9,7 +9,7 @@ module Encrypt
   end
 
   def characters_to_encrypt(message)
-    characters = message.chars
+    characters = message.downcase.chars
     message_with_indices = characters.map.with_index do |char, index|
       [char, index]
     end
