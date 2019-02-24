@@ -1,56 +1,44 @@
 module Encrypt
 
-  def apply_shift(message, key, date)
+  def encrypt_message(message, key, date)
     shifts(key, date)
-    encryption = characters(message).map do |char|
-      if character_set.include?(char[0])
-        decide_shifts(char)
-      else
-        char[0]
-      end
+    encryption = characters_to_encrypt(message).map do |char|
+      check_valid_characters(char)
     end
     encryption
   end
 
-  def characters(message)
+  def characters_to_encrypt(message)
     characters = message.chars
     message_with_indices = characters.map.with_index do |char, index|
       [char, index]
     end
     message_with_indices
   end
-  
-  def decide_shifts(char)
-    if char[1] % 4 == 0
-      a_shift(char)
-    elsif char[1] % 4 == 1
-      b_shift(char)
-    elsif char[1] % 4 == 2
-      c_shift(char)
-    elsif char[1] % 4 == 3
-      d_shift(char)
+
+  def check_valid_characters(char)
+    if character_set.include?(char[0])
+      decide_encrypt_shifts(char)
+    else
+      char[0]
     end
   end
 
-  def a_shift(char)
-      index = character_set.find_index(char[0])
-      character_set.rotate(@final_shift[:a])[index]
+  def decide_encrypt_shifts(char)
+    if char[1] % 4 == 0
+      encrypt_shifts(char, :a)
+    elsif char[1] % 4 == 1
+      encrypt_shifts(char, :b)
+    elsif char[1] % 4 == 2
+      encrypt_shifts(char, :c)
+    else
+      encrypt_shifts(char, :d)
+    end
   end
 
-  def b_shift(char)
-      index = character_set.find_index(char[0])
-      character_set.rotate(@final_shift[:b])[index]
-  end
-
-  def c_shift(char)
+  def encrypt_shifts(char, shift)
     index = character_set.find_index(char[0])
-    character_set.rotate(@final_shift[:c])[index]
+    shift = @encryption_modifier * final_shift[shift]
+    character_set.rotate(shift)[index]
   end
-
-  def d_shift(char)
-    index = character_set.find_index(char[0])
-    character_set.rotate(@final_shift[:d])[index]
-  end
-
-
 end
