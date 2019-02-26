@@ -1,10 +1,12 @@
 require './lib/encrypt_module'
 require './lib/generator'
+require './lib/crack'
 
 class Enigma
   attr_reader :final_shift
   include Generator
   include Encrypt
+  include Crack
 
   def initialize(modifier = 1) #This is for decrypt unit testing purposes.
     @final_shift = nil
