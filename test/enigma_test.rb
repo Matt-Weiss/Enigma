@@ -57,4 +57,10 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello world", decrypted[:decryption]
   end
 
+  def test_crack
+    enigma = Enigma.new
+    encrypted = enigma.encrypt("hello world end")
+    cracked = enigma.crack(encrypted[:encryption])
+    assert_equal "hello world end", cracked[:decryption]
+  end
 end
