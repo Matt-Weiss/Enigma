@@ -27,4 +27,12 @@ class Enigma
      date: date}
   end
 
+  def crack(message, date = todays_date)
+    key = find_key
+    @encryption_modifier = -1
+    {decryption: encrypt_message(message, key, date).join,
+     key: key,
+     date: date}
+  end
+
 end
