@@ -1,7 +1,7 @@
 require './lib/runner'
 
-if ARGV.length != 4
-  puts "Expected 4 arguments, recieved #{ARGV.length}"
+if ARGV.length != 4 && ARGV.length != 3
+  puts "Expected 4 arguments, received #{ARGV.length}"
   exit
 end
 
