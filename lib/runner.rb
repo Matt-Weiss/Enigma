@@ -1,5 +1,4 @@
 require './lib/enigma'
-require 'pry'
 
 class Runner
 
@@ -23,7 +22,7 @@ class Runner
     elsif $0 == "./lib/decrypt.rb"
       self.decrypt(argv)
     else
-      self.crack
+      self.crack(argv)
     end
   end
 
@@ -37,7 +36,7 @@ class Runner
 
   def self.decrypt(argv)
     enigma = Enigma.new
-    decrypted = enigma.decrypt(@input, argv[2], argv[3])
+    decrypted = enigma.decrypt(@input, argv[2], argv[3] = enigma.todays_date)
     @output_file.write(decrypted[:decryption])
     @output_file.close
     puts "Created #{@output_name} with the key #{decrypted[:key]} and date #{decrypted[:date]}"
@@ -45,7 +44,7 @@ class Runner
 
   def self.crack(argv)
     enigma = Enigma.new
-    cracked = enigma.crack(@input, argv[2])
+    cracked = enigma.crack(@input, argv[2] = enigma.todays_date)
     @output_file.write(cracked[:decryption])
     @output_file.close
     puts "Created #{@output_name} with the key #{cracked[:key]} and date #{cracked[:date]}"
