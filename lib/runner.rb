@@ -1,25 +1,26 @@
 require './lib/enigma'
+require 'pry'
 
 class Runner
 
   def self.read_message_from_file(file_name)
-    file_path = "./data/#{file_name}"
+    file_path = "./#{file_name}"
     file = File.new(file_path)
     @input = file.read.chomp
   end
 
   def self.create_write_file(file_name)
     @output_name = file_name
-    file_path = "./data/#{file_name}"
+    file_path = "./#{file_name}"
     @output_file = File.open(file_path, "w")
   end
 
   def self.start(argv)
     read_message_from_file(argv[0])
     create_write_file(argv[1])
-    if $0 == "./lib/encrypt.rb"
+    if $0 == "lib/encrypt.rb"
       self.encrypt
-    elsif $0 == "./lib/decrypt.rb"
+    elsif $0 == "lib/decrypt.rb"
       self.decrypt(argv)
     else
       self.crack(argv)
