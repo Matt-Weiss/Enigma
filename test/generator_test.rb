@@ -12,7 +12,7 @@ class GeneratorTest < Minitest::Test
   end
 
   def test_we_can_get_todays_date
-    assert_equal "260219", @enigma.todays_date
+    assert_equal "270219", @enigma.todays_date
   end
 
   def test_seperate_keys
